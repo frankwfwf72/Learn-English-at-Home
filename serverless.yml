@@ -1,0 +1,30 @@
+service: learn-english-at-home
+
+frameworkVersion: '3'
+
+provider:
+  name: tencent
+  runtime: Nodejs16.13
+  region: ap-guangzhou
+  stage: dev
+
+plugins:
+  - serverless-nextjs-plugin
+
+custom:
+  nextComponent:
+    component: '@sls-next/serverless-component'
+    inputs:
+      functionName: learn-english-at-home
+      region: ap-guangzhou
+      runtime: Nodejs16.13
+      timeout: 60
+      memorySize: 512
+      enableUrl: true
+      useContainer: false
+
+package:
+  exclude:
+    - .git/**
+    - .next/**
+    - node_modules/**
